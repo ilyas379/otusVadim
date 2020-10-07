@@ -28,6 +28,7 @@ public class FirstTest {
     public void quit() {
         if (driver != null) {
             driver.close();
+            driver.quit();
         }
     }
 }
