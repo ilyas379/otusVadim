@@ -1,35 +1,29 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class SampleTest {
+public class ChromeBrowser implements Browser {
 
     protected static WebDriver driver;
-    private Logger logger = LogManager.getLogger(SampleTest.class);
+    private Logger logger = LogManager.getLogger(ChromeBrowser.class);
 
-    @Before
-    public void setUp() {
+    @Override
+    public void create(String url) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        logger.info("Драйвер поднят, здравствуйте");
+        logger.info("Драйвер поднят");
+        driver.get(url);
+        logger.info("Открыта страница сайта " + url);
+
     }
 
-    @Test
-    public void openPage() {
-        driver.get("https://otus.ru/");
-        logger.info("Открыта страница ОТУСА");
-    }
-
-    @After
+    @Override
     public void setDown() {
         if (driver != null) {
             driver.quit();
         }
+        logger.info("Программа закончила работать");
     }
-
 }
