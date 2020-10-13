@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ChromeBrowser implements Browser {
 
-    protected static WebDriver driver;
+    public static WebDriver driver;
     private Logger logger = LogManager.getLogger(ChromeBrowser.class);
 
     @Override
