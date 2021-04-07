@@ -1,3 +1,5 @@
+package browser;
+
 public class FireFoxBrowserFactory implements BrowserFactory {
     @Override
     public Browser createBrowser() {
